@@ -69,29 +69,48 @@ body{font-family:'Tajawal',sans-serif;color:#fff;direction:ltr}
 .ftitle{position:absolute;top:300px;left:70px;right:70px;text-align:center}
 .ftitle .k{font:700 40px 'Tajawal';color:var(--gold1);letter-spacing:2px}
 .ftitle .t{font:700 92px/1.3 'El Messiri';margin-top:10px}
-.grid{position:absolute;top:700px;left:70px;right:70px;display:grid;grid-template-columns:1fr 1fr;gap:34px;perspective:1200px}
-.chip{display:flex;align-items:center;gap:20px;height:170px;padding:0 28px;white-space:nowrap;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
+.grid{position:absolute;top:690px;left:70px;right:70px;display:grid;grid-template-columns:1fr 1fr;gap:26px;perspective:1200px}
+.chip{display:flex;align-items:center;gap:20px;height:146px;padding:0 28px;white-space:nowrap;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
   border:2px solid rgba(246,225,168,.45);box-shadow:0 20px 50px rgba(0,0,0,.35);transform-origin:50% 0%}
 .chip svg{width:72px;height:72px;flex:none}
 .chip svg *{fill:none;stroke:var(--gold1);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
 .chip b{font:700 44px 'Tajawal'}
 
+/* beds */
+.beds .head{position:absolute;top:330px;left:70px;right:70px;text-align:center;direction:rtl}
+.beds .head .k{font:700 42px 'Tajawal';color:var(--gold1);letter-spacing:2px}
+.beds .head .t{font:700 150px/1.25 'El Messiri';margin-top:6px}
+.beds .list{position:absolute;top:760px;left:80px;right:80px;display:flex;flex-direction:column;gap:46px;perspective:1300px;direction:rtl}
+.bcard{display:flex;align-items:center;gap:40px;padding:44px 50px;border-radius:40px;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));
+  border:2px solid rgba(246,225,168,.55);box-shadow:0 30px 70px rgba(0,0,0,.45);transform-origin:50% 0%}
+.bcard .ic{flex:none;width:170px;height:170px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(246,225,168,.12);border:2px solid rgba(246,225,168,.5)}
+.bcard svg{width:110px;height:110px}.bcard svg *{fill:none;stroke:var(--gold1);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.bcard .n{font:700 62px 'El Messiri'}.bcard .d{font:500 42px 'Tajawal';color:rgba(255,255,255,.85);margin-top:6px}
+.bcard .num{font:700 40px 'El Messiri';color:var(--gold2)}
+/* rain */
+.rainfx{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
 /* cta */
 .cta{position:absolute;inset:0}
-.cta .logo{top:200px}
+.cta .logo{top:110px}
 .cta .logo .big{font-size:190px}
 .cta .logo .tag{font-size:46px}
-.headline{position:absolute;top:760px;left:0;right:0;text-align:center;font:700 112px 'El Messiri'}
-.label{position:absolute;top:960px;left:0;right:0;text-align:center;font:700 46px 'Tajawal';color:rgba(255,255,255,.9)}
-.phones{position:absolute;top:1060px;left:110px;right:110px;display:flex;flex-direction:column;gap:36px}
+.headline{position:absolute;top:520px;left:0;right:0;text-align:center;font:700 112px 'El Messiri'}
+.label{position:absolute;top:700px;left:0;right:0;text-align:center;font:700 46px 'Tajawal';color:rgba(255,255,255,.9)}
+.phones{position:absolute;top:790px;left:110px;right:110px;display:flex;flex-direction:column;gap:36px}
 .phone{height:170px;border-radius:85px;display:flex;align-items:center;justify-content:center;gap:34px;direction:ltr;
   background:linear-gradient(135deg,rgba(246,225,168,.22),rgba(168,118,46,.12));border:3px solid rgba(246,225,168,.8);box-shadow:0 0 50px rgba(217,174,95,.25),inset 0 0 30px rgba(246,225,168,.12);overflow:hidden;position:relative}
 .phone .num{font:800 92px 'Tajawal';letter-spacing:6px;color:#fff;padding-top:12px}
 .phone svg{width:74px;height:74px}
 .phone .shine{position:absolute;top:0;bottom:0;width:240px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);left:-300px}
-.addr{position:absolute;top:1520px;left:90px;right:90px;text-align:center}
-.addr .a1{display:flex;justify-content:center;align-items:center;gap:20px;font:700 50px 'Tajawal';color:var(--gold1)}
-.addr .a2{font:500 46px/1.5 'Tajawal';margin-top:14px;color:#fff}
+.loc{position:absolute;top:1250px;left:70px;right:70px;display:flex;align-items:center;gap:44px;direction:rtl}
+.qrbox{position:relative;flex:none;width:400px;padding:24px 24px 14px;border-radius:38px;background:#fff;border:5px solid var(--gold2);box-shadow:0 0 70px rgba(246,215,140,.45);text-align:center;overflow:hidden}
+.qrbox img{width:342px;height:342px;display:block;margin:0 auto}
+.qrbox .qc{font:800 36px 'Tajawal';color:#0e1220;margin-top:4px;direction:rtl}
+.qrbox .scan{position:absolute;left:0;right:0;height:70px;background:linear-gradient(to bottom,rgba(217,174,95,0),rgba(217,174,95,.55),rgba(217,174,95,0));top:-80px}
+.addr{flex:1;text-align:right}
+.addr .a1{display:flex;justify-content:flex-start;align-items:center;gap:20px;font:700 50px 'Tajawal';color:var(--gold1)}
+.addr .a3{font:500 34px/1.45 'Tajawal';margin-top:18px;color:rgba(246,225,168,.85)}
+.addr .a2{font:500 44px/1.5 'Tajawal';margin-top:14px;color:#fff}
 .foot{position:absolute;bottom:90px;left:0;right:0;text-align:center;font:500 32px 'Tajawal';color:rgba(255,255,255,.6);letter-spacing:3px}
 </style>
 </head>
@@ -108,7 +127,7 @@ body{font-family:'Tajawal',sans-serif;color:#fff;direction:ltr}
 <div id="vig"></div>
 
 <script>
-const FPS = 30, DUR = 80;
+const FPS = 30, DUR = 96.5;
 // ---------- helpers ----------
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lerp=(a,b,t)=>a+(b-a)*t;
@@ -130,6 +149,9 @@ const IC={
  moon:'<svg viewBox="0 0 64 64"><path d="M44 40A20 20 0 0 1 26 12a20 20 0 1 0 26 26 20 20 0 0 1-8 2z"/><path d="M46 12v8M42 16h8"/></svg>',
  drop:'<svg viewBox="0 0 64 64"><path d="M14 22h28v-6a6 6 0 0 1 12 0v4"/><path d="M14 22a14 14 0 0 1 28 0"/><path d="M20 34v4M28 34v6M36 34v4M24 46v4M32 46v4"/></svg>',
  snow:'<svg viewBox="0 0 64 64"><path d="M32 6v52M9.5 19l45 26M9.5 45l45-26"/><path d="M26 10l6 6 6-6M26 54l6-6 6 6"/></svg>',
+ rain:'<svg viewBox="0 0 64 64"><path d="M18 38a10 10 0 0 1 0-20 14 14 0 0 1 27-3 10 10 0 0 1 3 20H18z"/><path d="M22 44l-3 8M32 44l-3 8M42 44l-3 8"/></svg>',
+ mount:'<svg viewBox="0 0 64 64"><path d="M4 52l18-28 10 14 8-10 20 24z"/><circle cx="46" cy="14" r="5"/></svg>',
+ twin:'<svg viewBox="0 0 64 64"><path d="M4 48V18M4 40h24v8M28 40v-6a4 4 0 0 0-4-4H14v10"/><path d="M36 48V18M36 40h24v8M60 40v-6a4 4 0 0 0-4-4H46v10"/><circle cx="9" cy="34" r="3"/><circle cx="41" cy="34" r="3"/></svg>',
  phone:'<svg viewBox="0 0 64 64"><path d="M20 6h8l4 12-6 4a32 32 0 0 0 16 16l4-6 12 4v8a6 6 0 0 1-6 6C27 50 14 37 14 12a6 6 0 0 1 6-6z" style="fill:none;stroke:#f6e1a8;stroke-width:4;stroke-linejoin:round"/></svg>',
  pin:'<svg viewBox="0 0 64 64" width="56" height="56"><path d="M32 58S12 38 12 24a20 20 0 0 1 40 0c0 14-20 34-20 34z" style="fill:none;stroke:#f6e1a8;stroke-width:4"/><circle cx="32" cy="24" r="7" style="fill:none;stroke:#f6e1a8;stroke-width:4"/></svg>'
 };
@@ -146,36 +168,42 @@ const SHOTS=[
  {id:'door',  t0:5.6,  t1:10.6,type:'image', src:'door', in:'iris', tin:.9,
    kb:{s:[1.02,1.32], x:[0,-2], y:[0,1], rx:[4,0], ry:[-6,2]}},
  {id:'ext',   t0:9.8,  t1:16.2,type:'video', dir:'ext', n:192, in:'zoomthru', tin:.8, kb:{s:[1.08,1.02]}},
- {id:'pool1', t0:15.4, t1:18.7,type:'video', dir:'pool1', n:99, in:'cube', tin:.8, kb:{s:[1.02,1.1]}},
- {id:'pool2', t0:18.1, t1:23.9,type:'video', dir:'pool2', n:174, in:'flash', tin:.6, kb:{s:[1.1,1.02]}},
- {id:'living',t0:23.1, t1:27.3,type:'image', src:'living', in:'slide3d', tin:.8,
+ {id:'rain1', t0:15.4, t1:20.6,type:'video', dir:'rain1', n:170, in:'flash', tin:.6, kb:{s:[1.0,1.12]}, rain:1},
+ {id:'rain2', t0:19.9, t1:24.4,type:'video', dir:'rain2', n:145, in:'fade', tin:.7, kb:{s:[1.1,1.0]}, rain:1},
+ {id:'pool1', t0:23.6, t1:26.9,type:'video', dir:'pool1', n:99, in:'cube', tin:.8, kb:{s:[1.02,1.1]}},
+ {id:'pool2', t0:26.3, t1:32.1,type:'video', dir:'pool2', n:174, in:'flash', tin:.6, kb:{s:[1.1,1.02]}},
+ {id:'living',t0:31.3, t1:35.5,type:'image', src:'living', in:'slide3d', tin:.8,
    kb:{s:[1.18,1.04], x:[0,0], y:[3,-2], rx:[6,0], ry:[0,0]}},
- {id:'livv',  t0:26.5, t1:32.1,type:'video', dir:'living', n:168, in:'fade', tin:.8, kb:{s:[1.02,1.08]}},
- {id:'tv',    t0:31.3, t1:35.3,type:'card', src:'tv', in:'cube', tin:.8},
- {id:'bed',   t0:34.5, t1:37.0,type:'video', dir:'bed', n:76, in:'flash', tin:.6, kb:{s:[1.12,1.02]}},
- {id:'majlis',t0:36.4, t1:40.4,type:'card', src:'majlis', in:'slide3d', tin:.8},
- {id:'majv',  t0:39.6, t1:44.4,type:'video', dir:'majlis', n:145, in:'fade', tin:.8, kb:{s:[1.02,1.08]}},
- {id:'bar',   t0:43.6, t1:49.0,type:'duo', a:'bar2', b:'bar1', bg:'bar1_bg', in:'iris', tin:.9},
- {id:'bath',  t0:48.2, t1:55.0,type:'carousel', imgs:['vanity1','shower','vanity2'], bg:'vanity1_bg', in:'cube', tin:.8},
- {id:'perg',  t0:54.2, t1:58.6,type:'card', src:'pergola', in:'flash', tin:.6},
- {id:'yard',  t0:57.8, t1:62.4,type:'image', src:'yard', in:'fade', tin:.8,
+ {id:'livv',  t0:34.7, t1:40.3,type:'video', dir:'living', n:168, in:'fade', tin:.8, kb:{s:[1.02,1.08]}},
+ {id:'tv',    t0:39.5, t1:43.5,type:'card', src:'tv', in:'cube', tin:.8},
+ {id:'bed',   t0:42.7, t1:45.8,type:'video', dir:'bed', n:76, speed:.8, in:'flash', tin:.6, kb:{s:[1.12,1.02]}},
+ {id:'beds',  t0:45.0, t1:50.4,type:'beds', bg:'bed_bg', in:'slide3d', tin:.8},
+ {id:'majlis',t0:49.6, t1:53.6,type:'card', src:'majlis', in:'cube', tin:.8},
+ {id:'majv',  t0:52.8, t1:57.6,type:'video', dir:'majlis', n:145, in:'fade', tin:.8, kb:{s:[1.02,1.08]}},
+ {id:'bar',   t0:56.8, t1:62.2,type:'duo', a:'bar2', b:'bar1', bg:'bar1_bg', in:'iris', tin:.9},
+ {id:'bathA', t0:61.4, t1:63.3,type:'video', dir:'bathA', n:45, speed:.8, in:'cube', tin:.8, kb:{s:[1.04,1.1]}},
+ {id:'bathB', t0:62.7, t1:64.9,type:'video', dir:'bathB', n:66, in:'fade', tin:.6, kb:{s:[1.1,1.03]}},
+ {id:'bath',  t0:64.3, t1:71.1,type:'carousel', imgs:['vanity1','shower','vanity2'], bg:'vanity1_bg', in:'flash', tin:.6},
+ {id:'perg',  t0:70.3, t1:74.7,type:'card', src:'pergola', in:'cube', tin:.8},
+ {id:'yard',  t0:73.9, t1:78.5,type:'image', src:'yard', in:'fade', tin:.8,
    kb:{s:[1.25,1.05], x:[0,0], y:[-3,0], rx:[-6,0], ry:[4,-2]}},
- {id:'feat',  t0:61.6, t1:68.4,type:'features', bg:'majlis_bg', in:'iris', tin:.9},
- {id:'cta',   t0:67.6, t1:DUR, type:'cta', bg:'pool_bg', in:'zoomthru', tin:.9},
+ {id:'feat',  t0:77.7, t1:84.9,type:'features', bg:'majlis_bg', in:'iris', tin:.9},
+ {id:'cta',   t0:84.1, t1:DUR, type:'cta', bg:'pool_bg', in:'zoomthru', tin:.9},
 ];
 const CAPS=[
  {t0:6.3, t1:10.3, n:'01', k:'مرحبًا بكم', t:'مدخلٌ خاص', s:'خصوصية تامة لك ولعائلتك'},
  {t0:10.5,t1:15.9, n:'02', k:'العارضة · القصبة', t:'إطلالة جبلية ساحرة', s:'هدوء الطبيعة ونقاء الأجواء'},
- {t0:16.1,t1:23.5, n:'03', k:'المسبح', t:'مسبحٌ داخلي مُضاء', s:'استرخاء وخصوصية في كل الأوقات'},
- {t0:23.8,t1:31.0, n:'04', k:'الصالة', t:'صالة معيشة فسيحة', s:'تصميم عصري وإضاءة مخفية راقية'},
- {t0:31.9,t1:34.4, n:'05', k:'ركن الترفيه', t:'جلسة عائلية مريحة', s:'شاشة عرض وتصميم أنيق'},
- {t0:34.9,t1:36.5, n:'06', k:'غرفة النوم', t:'راحة وهدوء', s:'نومٌ هانئ بعد يوم ممتع'},
- {t0:36.9,t1:44.0, n:'07', k:'المجلس', t:'مجلس عربي أصيل', s:'جلسات واسعة تجمع الأهل والأحباب'},
- {t0:44.3,t1:48.6, n:'08', k:'الضيافة', t:'ركن ضيافة أنيق', s:'إضاءة دافئة ولمسات رخامية'},
- {t0:48.8,t1:54.6, n:'09', k:'دورات المياه', t:'لمسات فندقية فاخرة', s:'رخام وتشطيبات عالية الجودة'},
- {t0:54.8,t1:61.6, n:'10', k:'الجلسات الخارجية', t:'سهرات تحت النجوم', s:'جلسة خارجية وساحة واسعة'},
+ {t0:16.0,t1:24.1, n:'03', k:'أجواء العارضة', t:'أجواء ماطرة طوال العام', s:'استمتع بالأجواء الماطرة طيلة أيام السنة'},
+ {t0:24.3,t1:31.7, n:'04', k:'المسبح', t:'مسبحٌ داخلي مُضاء', s:'استرخاء وخصوصية في كل الأوقات'},
+ {t0:32.0,t1:39.2, n:'05', k:'الصالة', t:'صالة معيشة فسيحة', s:'تصميم عصري وإضاءة مخفية راقية'},
+ {t0:40.1,t1:42.6, n:'06', k:'ركن الترفيه', t:'جلسة عائلية مريحة', s:'شاشة عرض وتصميم أنيق'},
+ {t0:43.1,t1:45.4, n:'07', k:'غرف النوم', t:'غرفة نوم رئيسية', s:'سرير مزدوج وأجواء هادئة'},
+ {t0:49.9,t1:57.2, n:'08', k:'المجلس', t:'مجلس عربي أصيل', s:'جلسات واسعة تجمع الأهل والأحباب'},
+ {t0:57.5,t1:61.8, n:'09', k:'الضيافة', t:'ركن ضيافة أنيق', s:'إضاءة دافئة ولمسات رخامية'},
+ {t0:62.0,t1:70.7, n:'10', k:'دورات المياه', t:'لمسات فندقية فاخرة', s:'رخام وتشطيبات عالية الجودة'},
+ {t0:70.9,t1:77.7, n:'11', k:'الجلسات الخارجية', t:'سهرات تحت النجوم', s:'جلسة خارجية وساحة واسعة'},
 ];
-const FEATS=[['pool','مسبح داخلي'],['sofa','مجلس عربي'],['tv','صالة معيشة'],['bed','غرفة نوم'],['cup','ركن ضيافة'],['moon','جلسة خارجية'],['drop','دورات مياه'],['snow','تكييف كامل']];
+const FEATS=[['pool','مسبح داخلي'],['rain','أجواء ماطرة'],['bed','غرفتا نوم'],['sofa','مجلس عربي'],['tv','صالة معيشة'],['cup','ركن ضيافة'],['moon','جلسة خارجية'],['mount','إطلالة جبلية'],['drop','دورات مياه'],['snow','تكييف كامل']];
 
 const stage=document.getElementById('stage');
 SHOTS.forEach((s,i)=>{
@@ -183,7 +211,14 @@ SHOTS.forEach((s,i)=>{
   if(s.type==='image'){
     el.innerHTML=`<div class="kb"><img class="fill" src="img/${s.src}.jpg"></div><div class="dim"></div>`;
   } else if(s.type==='video'){
-    el.innerHTML=`<div class="kb"><img class="fill vid"></div><div class="dim"></div>`;
+    el.innerHTML=`<div class="kb"><img class="fill vid"></div>`+(s.rain?`<canvas class="rainfx" width="540" height="960" style="width:1080px;height:1920px"></canvas>`:'')+`<div class="dim"></div>`;
+  } else if(s.type==='beds'){
+    el.innerHTML=`<div class="kb"><img class="fill" src="img/${s.bg}.jpg"></div><div class="dim" style="opacity:.35"></div>
+      <div class="beds"><div class="head"><div class="k">غرف النوم</div><div class="t gold-text">غرفتا نوم</div></div>
+      <div class="list">
+        <div class="bcard"><div class="ic">${IC.bed}</div><div><div class="n">غرفة نوم رئيسية</div><div class="d">سرير مزدوج واسع وأجواء هادئة</div></div></div>
+        <div class="bcard"><div class="ic">${IC.twin}</div><div><div class="n">غرفة نوم مزدوجة</div><div class="d">بسريرين منفصلين</div></div></div>
+      </div></div>`;
   } else if(s.type==='card'){
     el.innerHTML=`<div class="kb"><img class="fill" src="img/${s.src}_bg.jpg"></div>
       <div class="cardwrap"><div class="card" style="left:-480px;top:-300px;width:960px;height:600px"><img src="img/${s.src}.jpg"><div class="sheen"></div></div></div><div class="dim"></div>`;
@@ -216,7 +251,8 @@ SHOTS.forEach((s,i)=>{
          <div class="phone">${IC.phone}<span class="num">053 752 0629</span><div class="shine"></div></div>
          <div class="phone">${IC.phone}<span class="num">055 772 1770</span><div class="shine"></div></div>
        </div>
-       <div class="addr"><div class="a1">${IC.pin}<span>الموقع</span></div><div class="a2">العارضة - القصبة<br>خلف بقالة اليسر الذهبي</div></div>
+       <div class="loc"><div class="qrbox"><img src="img/qr.png"><div class="qc">امسح للوصول</div><div class="scan"></div></div>
+       <div class="addr"><div class="a1">${IC.pin}<span>الموقع</span></div><div class="a2">العارضة - القصبة<br>خلف بقالة اليسر الذهبي</div><div class="a3">امسح الكود ليفتح الموقع<br>مباشرة على خرائط Google</div></div></div>
        <div class="foot">شاليه الوجد · ملاذ الراحة</div>
       </div>`;
   }
@@ -271,7 +307,8 @@ async function renderShot(s,t){
   if(s.type==='image'){ el.querySelector('.kb').style.transform=kbT(s.kb,eio(u)); }
   else if(s.type==='video'){
     el.querySelector('.kb').style.transform=kbT(s.kb,u);
-    const img=el.querySelector('.vid'); const f=Math.min(s.n,1+Math.floor(L*FPS));
+    const img=el.querySelector('.vid'); const f=Math.min(s.n,1+Math.floor(L*FPS*(s.speed||1)));
+    if(s.rain) drawRain(el.querySelector('.rainfx'),t);
     const src=`vf/${s.dir}/${String(Math.max(1,f)).padStart(4,'0')}.jpg`;
     if(img.getAttribute('src')!==src){img.setAttribute('src',src);wait.push(img.decode().catch(()=>{}));}
   }
@@ -310,10 +347,24 @@ async function renderShot(s,t){
       c.style.filter=`brightness(${lerp(.35,1,(f+1)/2)})`; c.style.opacity=f<-.3?0:1;
       const im=c.querySelector('img'); im.style.left='50%'; im.style.transform='translateX(-50%)';});
   }
+  else if(s.type==='beds'){
+    el.querySelector('.kb').style.transform=`scale(${lerp(1.15,1,u)})`;
+    const h=el.querySelector('.head'); const hp=eo(seg(L,.5,1.3)); h.style.opacity=hp; h.style.transform=`translateY(${lerp(50,0,hp)}px) scale(${lerp(1.08,1,hp)})`;
+    el.querySelectorAll('.bcard').forEach((c,i)=>{const p=eo(seg(L,1.2+i*.45,2.1+i*.45)); c.style.opacity=p;
+      c.style.transform=`rotateX(${lerp(-80,0,p)}deg) translateZ(${lerp(-120,0,p)}px)`;
+      const sw=Math.sin(Math.PI*seg(L,3.0+i*.3,3.7+i*.3)); c.style.borderColor=`rgba(246,225,168,${.55+.45*sw})`; c.style.boxShadow=`0 30px 70px rgba(0,0,0,.45),0 0 ${60*sw}px rgba(246,200,120,${.5*sw})`;});
+  }
   else if(s.type==='intro') renderIntro(s,L);
   else if(s.type==='features') renderFeat(s,L);
   else if(s.type==='cta') renderCta(s,L);
   return Promise.all(wait);
+}
+function drawRain(cv,t){
+  const c=cv.getContext('2d'); c.clearRect(0,0,540,960); const r=rnd(5); c.lineCap='round';
+  for(let i=0;i<260;i++){const z=.35+r()*.65, sp=1500*z, len=24+40*z, x0=r()*640-50, y0=r()*960, ph=r();
+    const y=((y0+t*sp)%1060+1060)%1060-100, x=x0+y*.12;
+    c.strokeStyle=`rgba(225,235,245,${.10+.30*z})`; c.lineWidth=.6+1.3*z;
+    c.beginPath(); c.moveTo(x,y); c.lineTo(x+len*.12,y+len); c.stroke();}
 }
 function strokeDraw(root,p){root.querySelectorAll('.st').forEach((e,i)=>{const len=e.getTotalLength();e.style.strokeDasharray=len;
   e.style.strokeDashoffset=len*(1-eo(clamp(p*1.4-i*.12)))})}
@@ -352,7 +403,10 @@ function renderCta(s,L){
     ph.style.transform=`perspective(900px) rotateX(${lerp(70,0,q)}deg) translateY(${lerp(60,0,q)}px)`;
     const cyc=((L-4.2-i*.4)%3.2+3.2)%3.2; ph.querySelector('.shine').style.left=`${lerp(-300,1100,clamp(cyc/1.1))}px`;
     const pulse=1+.015*Math.sin((L-4)*2.6+i); ph.style.transform+=` scale(${L>4.2?pulse:1})`;});
-  const ad=el.querySelector('.addr'); const aq=eo(seg(L,3.9,4.8)); ad.style.opacity=aq; ad.style.transform=`translateY(${lerp(40,0,aq)}px)`;
+  const ad=el.querySelector('.addr'); const aq=eo(seg(L,4.3,5.2)); ad.style.opacity=aq; ad.style.transform=`translateY(${lerp(40,0,aq)}px)`;
+  const qb=el.querySelector('.qrbox'); const qq=eo(seg(L,3.8,4.9)); qb.style.opacity=qq;
+  qb.style.transform=`perspective(1000px) rotateY(${lerp(-100,0,qq)}deg) scale(${lerp(.7,1,qq)*(L>5?1+.02*Math.sin((L-5)*2.4):1)})`;
+  const sc=((L-5)%2.4+2.4)%2.4; qb.querySelector('.scan').style.top=(L>5?lerp(-80,480,clamp(sc/1.4)):-80)+'px';
   el.querySelector('.foot').style.opacity=seg(L,4.6,5.4)*.9;
   el.querySelector('.dim').style.opacity=lerp(.2,.5,seg(L,0,2.5));
 }
@@ -392,14 +446,14 @@ window.renderAt=async function(t){
   let capA=0; CAPS.forEach(c=>{capA=Math.max(capA,renderCap(c,t))});
   document.getElementById('scrim').style.opacity=Math.max(capA, seg(t,61.6,62.4)*(1-seg(t,67.6,68.4))*0);
   // watermark
-  const wmA=seg(t,6.6,7.6)*(1-seg(t,61.2,62.0));
+  const wmA=seg(t,6.6,7.6)*(1-seg(t,77.3,78.1));
   document.getElementById('wm').style.opacity=wmA; document.getElementById('topscrim').style.opacity=wmA;
   // overlays
   document.getElementById('flash').style.opacity=flash;
   const lk=document.getElementById('leak'); lk.style.opacity=leak*.85;
   lk.style.transform=`translate(${Math.sin(t*.7)*120}px,${Math.cos(t*.5)*160}px) rotate(${t*8}deg)`;
   // particles: strong in intro/features/cta, light elsewhere
-  const pA=Math.max(1-seg(t,5.6,6.6), seg(t,61.6,62.6)) *1 + .25;
+  const pA=Math.max(1-seg(t,5.6,6.6), seg(t,77.7,78.7)) *1 + .25;
   PARTS.forEach((q,i)=>{const y=((q.y - t*q.sp)%1920+1920)%1920, x=q.x+Math.sin(t*.8+q.ph)*q.dr;
     const tw=.5+.5*Math.sin(t*2.2+q.ph*3);
     q.e.style.transform=`translate(${x}px,${y}px)`; q.e.style.width=q.e.style.height=q.sz+'px';

@@ -1,7 +1,7 @@
 import numpy as np, wave, sys
 from scipy.signal import butter, sosfilt
 
-SR = 44100; DUR = 80.0; N = int(SR * DUR)
+SR = 44100; DUR = 96.5; N = int(SR * DUR)
 rng = np.random.default_rng(11)
 BPM = 125; BEAT = 60 / BPM; BAR = 4 * BEAT; STEP = BEAT / 4
 
@@ -149,36 +149,53 @@ add(FX, riser(3.0), 3.4, g=.35)
 snare_roll(6.4 - 2 * BAR, 2)
 
 # DROP A 6.4 -> 61.6 (lead arp enters after 4 bars)
-nA = int(np.floor((61.6 - 6.4) / BAR))  # 28 bars
+FEAT = 77.7; CTA = 84.1
+nA = int(np.floor((FEAT - 6.4) / BAR))
 k1 = section(6.4, 4, lead=False)
-k2 = section(6.4 + 4 * BAR, nA - 4, lead=True, breaks=(12, 13))
+k2 = section(6.4 + 4 * BAR, nA - 4, lead=True, breaks=(3, 4))
 duck(k1 + k2)
 endA = 6.4 + nA * BAR
 # BUILD (features) endA -> 67.6: kick 4otf, chords opening, snare roll, riser
-nb = (67.6 - endA)
+nb = (CTA - endA)
 t = endA; kb = []
-while t < 67.6 - BEAT * .9:
+while t < CTA - BEAT * .9:
     add(DR, kick(.9), t); kb.append(t); t += BEAT
 duck(kb, .5)
 bp_ = np.zeros(int(nb * SR) + 1); j = 0
 while j * BAR < nb:
     s = supersaw(CHORDS[j % 4], BAR); i = int(j * BAR * SR); n = min(len(s), len(bp_) - i); bp_[i:i+n] += s[:n]; j += 1
 add(CH, sweep_lp(bp_, 600, 9000, 1.5), endA, g=1.0)
-snare_roll(67.6 - 2 * BAR, 2)
+snare_roll(CTA - 2 * BAR, 2)
 add(FX, riser(nb, 300, 12000), endA, g=.4)
 # DROP B 67.6 -> ~77.2, brighter lead an octave up
 nB = 5
-kB = section(67.6, nB, lead=True, lead_oct=36, crash_every=4)
+kB = section(CTA, nB, lead=True, lead_oct=36, crash_every=4)
 duck(kB)
-tEnd = 67.6 + nB * BAR
+tEnd = CTA + nB * BAR
 add(FX, impact(), tEnd, g=1.0); add(FX, crash(4), tEnd, g=.6)
 add(CH, supersaw([38, 50, 57, 62, 65, 69], 2.8) * np.exp(-tt(2.8) * 1.1), tEnd, g=1.3)
 add(LE, pluck(74, 1.5, 4000), tEnd, g=.5)
 
 # whooshes on the scene transitions (between the beats)
-for x in [9.8, 15.4, 18.1, 23.1, 26.5, 31.3, 34.5, 36.4, 39.6, 43.6, 48.2, 54.2, 57.8]:
+for x in [9.8, 19.9, 23.6, 26.3, 31.3, 34.7, 39.5, 42.7, 45.0, 49.6, 52.8, 56.8, 61.4, 62.7, 64.3, 70.3, 73.9]:
     add(FX, whoosh(), x - 0.45, g=.18, pan=rng.uniform(-.5, .5))
-add(FX, downlifter(), 61.6, g=.25)
+add(FX, downlifter(), FEAT, g=.25)
+# rain ambience + thunder for the rainy scene (15.4 - 24.4)
+def rain_amb(d):
+    t = tt(d); n = rng.uniform(-1, 1, len(t))
+    x = bp(n, 600, 9000) * 0.5 + filt(n, 500) * 0.6
+    drops = np.zeros(len(t)); idx = rng.integers(0, len(t), int(d * 90)); drops[idx] = rng.uniform(.3, 1, len(idx))
+    drops = filt(drops, 2500, 'high') * 2.5
+    e = np.minimum(1, t / 1.0) * np.minimum(1, (d - t) / 1.2).clip(0)
+    return (x + drops) * e
+def thunder():
+    t = tt(4.5); n = rng.uniform(-1, 1, len(t))
+    crack = filt(n, 2500) * np.exp(-t * 9)
+    rumble = filt(n, 160) * (np.exp(-t * .9) * (1 + .6 * np.sin(2 * np.pi * 1.7 * t))) * 3
+    return np.tanh((crack + rumble) * 1.5) * np.minimum(1, t / .02)
+for c, p_ in ((0, -.4), (1, .4)):
+    add(FX, rain_amb(9.6), 15.0, pan=p_, g=.28)
+add(FX, thunder(), 15.35, g=.75)
 
 # ---------- mix ----------
 def conv(x, h):
