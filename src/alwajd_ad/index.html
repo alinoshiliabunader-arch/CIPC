@@ -87,6 +87,19 @@ body{font-family:'Tajawal',sans-serif;color:#fff;direction:ltr}
 .bcard svg{width:110px;height:110px}.bcard svg *{fill:none;stroke:var(--gold1);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .bcard .n{font:700 62px 'El Messiri'}.bcard .d{font:500 42px 'Tajawal';color:rgba(255,255,255,.85);margin-top:6px}
 .bcard .num{font:700 40px 'El Messiri';color:var(--gold2)}
+/* notes */
+.note{position:absolute;inset:0;direction:rtl;text-align:center}
+.note .box{position:absolute;left:70px;right:70px;top:50%;transform:translateY(-50%)}
+.note .ic{width:190px;height:190px;margin:0 auto 30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(10,14,26,.45);border:3px solid rgba(246,225,168,.7);box-shadow:0 0 60px rgba(246,215,140,.35)}
+.note .ic svg{width:120px;height:120px}.note .ic svg *{fill:none;stroke:var(--gold1);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.note .k{font:700 44px 'Tajawal';color:var(--gold1);letter-spacing:2px}
+.note .t{font:700 112px/1.3 'El Messiri';margin-top:14px;text-shadow:0 10px 50px rgba(0,0,0,.7)}
+.note .t2{font:700 104px/1.3 'El Messiri'}
+.note .s{font:500 46px/1.5 'Tajawal';margin-top:24px;color:rgba(255,255,255,.92);text-shadow:0 4px 20px rgba(0,0,0,.8)}
+.note .rows{margin-top:56px;display:flex;flex-direction:column;gap:34px;perspective:1200px}
+.note .row2{display:flex;align-items:center;gap:34px;padding:36px 44px;border-radius:36px;text-align:right;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border:2px solid rgba(246,225,168,.55);box-shadow:0 26px 60px rgba(0,0,0,.4);transform-origin:50% 0}
+.note .badge{flex:none;width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 64px 'El Messiri';color:#1a1408;background:linear-gradient(180deg,#fff1c4,#d9ae5f)}
+.note .row2 .n{font:700 58px 'El Messiri'}.note .row2 .d{font:500 42px 'Tajawal';color:rgba(255,255,255,.88);margin-top:4px}
 /* rain */
 .rainfx{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
 /* cta */
@@ -127,7 +140,7 @@ body{font-family:'Tajawal',sans-serif;color:#fff;direction:ltr}
 <div id="vig"></div>
 
 <script>
-const FPS = 30, DUR = 96.5;
+const FPS = 30, DUR = 104.5;
 // ---------- helpers ----------
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lerp=(a,b,t)=>a+(b-a)*t;
@@ -188,7 +201,9 @@ const SHOTS=[
  {id:'yard',  t0:73.9, t1:78.5,type:'image', src:'yard', in:'fade', tin:.8,
    kb:{s:[1.25,1.05], x:[0,0], y:[-3,0], rx:[-6,0], ry:[4,-2]}},
  {id:'feat',  t0:77.7, t1:84.9,type:'features', bg:'majlis_bg', in:'iris', tin:.9},
- {id:'cta',   t0:84.1, t1:DUR, type:'cta', bg:'pool_bg', in:'zoomthru', tin:.9},
+ {id:'nrain', t0:84.1, t1:88.9,type:'note', dir:'rain2', n:145, in:'cube', tin:.8, rain:1, kind:'rain'},
+ {id:'nbed',  t0:88.1, t1:92.9,type:'note', img:'bed_bg', in:'slide3d', tin:.8, kind:'bed'},
+ {id:'cta',   t0:92.1, t1:DUR, type:'cta', bg:'pool_bg', in:'zoomthru', tin:.9},
 ];
 const CAPS=[
  {t0:6.3, t1:10.3, n:'01', k:'مرحبًا بكم', t:'مدخلٌ خاص', s:'خصوصية تامة لك ولعائلتك'},
@@ -212,12 +227,22 @@ SHOTS.forEach((s,i)=>{
     el.innerHTML=`<div class="kb"><img class="fill" src="img/${s.src}.jpg"></div><div class="dim"></div>`;
   } else if(s.type==='video'){
     el.innerHTML=`<div class="kb"><img class="fill vid"></div>`+(s.rain?`<canvas class="rainfx" width="540" height="960" style="width:1080px;height:1920px"></canvas>`:'')+`<div class="dim"></div>`;
+  } else if(s.type==='note'){
+    const bg=s.dir?`<div class="kb"><img class="fill vid"></div>`:`<div class="kb"><img class="fill" src="img/${s.img}.jpg"></div>`;
+    const body=s.kind==='rain'?`<div class="box"><div class="ic">${IC.rain}</div><div class="k">أجواء العارضة الساحرة</div>
+        <div class="t">استمتع بالأجواء الماطرة</div><div class="t2 gold-text">طيلة أيام السنة</div>
+        <div class="s">أمطار منعشة وأجواء خلّابة<br>في أجمل جلسات شاليه الوجد</div></div>`
+      :`<div class="box"><div class="ic">${IC.twin}</div><div class="k">تفاصيل الإقامة</div><div class="t gold-text">غرفتا نوم</div>
+        <div class="rows"><div class="row2"><div class="badge">1</div><div><div class="n">غرفة نوم رئيسية</div><div class="d">سرير مزدوج واسع</div></div></div>
+        <div class="row2"><div class="badge">2</div><div><div class="n">غرفة نوم مزدوجة ثانية</div><div class="d">بسريرين منفصلين</div></div></div></div></div>`;
+    el.innerHTML=bg+(s.rain?`<canvas class="rainfx" width="540" height="960" style="width:1080px;height:1920px"></canvas>`:'')+
+      `<div class="dim" style="opacity:.5"></div><div class="note">${body}</div>`;
   } else if(s.type==='beds'){
     el.innerHTML=`<div class="kb"><img class="fill" src="img/${s.bg}.jpg"></div><div class="dim" style="opacity:.35"></div>
       <div class="beds"><div class="head"><div class="k">غرف النوم</div><div class="t gold-text">غرفتا نوم</div></div>
       <div class="list">
         <div class="bcard"><div class="ic">${IC.bed}</div><div><div class="n">غرفة نوم رئيسية</div><div class="d">سرير مزدوج واسع وأجواء هادئة</div></div></div>
-        <div class="bcard"><div class="ic">${IC.twin}</div><div><div class="n">غرفة نوم مزدوجة</div><div class="d">بسريرين منفصلين</div></div></div>
+        <div class="bcard"><div class="ic">${IC.twin}</div><div><div class="n">غرفة نوم مزدوجة ثانية</div><div class="d">بسريرين منفصلين</div></div></div>
       </div></div>`;
   } else if(s.type==='card'){
     el.innerHTML=`<div class="kb"><img class="fill" src="img/${s.src}_bg.jpg"></div>
@@ -347,6 +372,21 @@ async function renderShot(s,t){
       c.style.filter=`brightness(${lerp(.35,1,(f+1)/2)})`; c.style.opacity=f<-.3?0:1;
       const im=c.querySelector('img'); im.style.left='50%'; im.style.transform='translateX(-50%)';});
   }
+  else if(s.type==='note'){
+    el.querySelector('.kb').style.transform=`scale(${lerp(1.12,1.0,u)})`;
+    if(s.dir){const img=el.querySelector('.vid'); const f=Math.min(s.n,1+Math.floor(L*FPS));
+      const src=`vf/${s.dir}/${String(Math.max(1,f)).padStart(4,'0')}.jpg`;
+      if(img.getAttribute('src')!==src){img.setAttribute('src',src);wait.push(img.decode().catch(()=>{}));}}
+    if(s.rain) drawRain(el.querySelector('.rainfx'),t);
+    const box=el.querySelector('.box'), q=(a,b)=>eo(seg(L,a,b));
+    const ic=box.querySelector('.ic'); ic.style.opacity=q(.5,1.1); ic.style.transform=`scale(${lerp(.5,1,q(.5,1.2))})`;
+    box.querySelector('.k').style.opacity=q(.8,1.3);
+    const tt_=box.querySelector('.t'); tt_.style.opacity=q(1.0,1.6); tt_.style.transform=`translateY(${lerp(50,0,q(1.0,1.8))}px)`;
+    const t2=box.querySelector('.t2'); if(t2){t2.style.opacity=q(1.5,2.1); t2.style.transform=`scale(${lerp(1.25,1,q(1.5,2.3))})`;}
+    const ss=box.querySelector('.s'); if(ss){ss.style.opacity=q(2.1,2.8);}
+    box.querySelectorAll('.row2').forEach((r,i)=>{const p=q(1.5+i*.45,2.4+i*.45); r.style.opacity=p; r.style.transform=`rotateX(${lerp(-80,0,p)}deg)`;
+      const sw=Math.sin(Math.PI*seg(L,3.0+i*.3,3.7+i*.3)); r.style.boxShadow=`0 26px 60px rgba(0,0,0,.4),0 0 ${60*sw}px rgba(246,200,120,${.5*sw})`;});
+  }
   else if(s.type==='beds'){
     el.querySelector('.kb').style.transform=`scale(${lerp(1.15,1,u)})`;
     const h=el.querySelector('.head'); const hp=eo(seg(L,.5,1.3)); h.style.opacity=hp; h.style.transform=`translateY(${lerp(50,0,hp)}px) scale(${lerp(1.08,1,hp)})`;
@@ -439,7 +479,7 @@ window.renderAt=async function(t){
     if(s.in==='cube'||s.in==='slide3d'){const p=(t-s.t0)/s.tin; if(p>=0&&p<=1) leak=Math.max(leak,.55*Math.sin(Math.PI*p))}
     s.el.style.opacity=st.op; s.el.style.transform=st.tf||'none'; s.el.style.clipPath=st.clip;
     s.el.style.filter=st.blur>0.05?`blur(${st.blur}px)`:'none';
-    const dm=s.el.querySelector(':scope > .dim'); if(dm && s.type!=='features' && s.type!=='cta') dm.style.opacity=st.dim;
+    const dm=s.el.querySelector(':scope > .dim'); if(dm && s.type!=='features' && s.type!=='cta' && s.type!=='note') dm.style.opacity=st.dim;
     waits.push(renderShot(s,t));
   });
   // captions + scrim
