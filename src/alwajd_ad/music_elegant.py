@@ -1,6 +1,6 @@
 import numpy as np, wave, sys
 from scipy.signal import butter, sosfilt
-SR=44100; DUR=104.5; N=int(SR*DUR); rng=np.random.default_rng(21)
+SR=44100; DUR=96.5; N=int(SR*DUR); rng=np.random.default_rng(21)
 BPM=108; BEAT=60/BPM; BAR=4*BEAT; E=BEAT/2
 def bus(): return np.zeros((N,2))
 PI,ST,BA,DR,FX=bus(),bus(),bus(),bus(),bus()
@@ -96,7 +96,7 @@ def bars(t0,n,lvl):
         if lvl>=3:
             for j,m in enumerate(MEL[k]): add(PI,bell(m,1.8),tb+j*BEAT,pan=.15,g=.75)
 # ---- arrangement (scene times from the video)
-FEAT=77.7; NR=84.1; CTA=92.1
+FEAT=77.7; CTA=84.1
 add(ST,strings([47,59,62,66],6.6,1800,att=3.0),0,g=1.1)
 for j,m in enumerate([71,74,78,83,78,74]): add(PI,piano(m,3.0,.7),0.6+j*E*1.5,pan=-.3+.12*j)
 add(FX,swell(2.9),0.4,g=.4); add(FX,impact(),3.3,g=.8); add(FX,cymbal(),3.3,g=.6)
@@ -112,16 +112,13 @@ add(FX,swell(23.6-t+.3),t-.3,g=.3); t=23.6
 add(FX,cymbal(),t,g=.7)
 nm=int((FEAT-t)//BAR); bars(t,nm,3); t+=nm*BAR
 add(FX,cymbal(),t,g=.5)
-bars(t,int((NR-t)//BAR)+1,2); 
-# rain note: gentle again
-add(FX,rain_amb(5.0),NR,g=.22,pan=-.3); add(FX,rain_amb(5.0),NR,g=.22,pan=.3)
-t2=NR; bars(t2,int((CTA-1.2-t2)//BAR),1)
+bars(t,int((CTA-1.2-t)//BAR),2)
 add(FX,swell(2.4),CTA-2.4,g=.45)
 add(FX,impact(),CTA,g=.7); add(FX,cymbal(4),CTA,g=.7)
 nf=int((DUR-3.5-CTA)//BAR); bars(CTA,nf,3); tE=CTA+nf*BAR
 add(ST,strings([47,59,62,66,71],4.0,2200,att=.05),tE,g=1.2); add(PI,piano(47,4),tE); add(PI,piano(59,4),tE); add(PI,piano(66,4),tE); add(PI,bell(83,3.5),tE)
 add(FX,cymbal(4),tE,g=.5)
-for x in [9.8,19.9,26.3,31.3,34.7,39.5,42.7,45.0,49.6,52.8,56.8,61.4,64.3,70.3,73.9,88.1]:
+for x in [9.8,19.9,26.3,31.3,34.7,39.5,42.7,45.0,49.6,52.8,56.8,61.4,64.3,70.3,73.9]:
     add(FX,whoosh(),x-.45,g=.10,pan=rng.uniform(-.5,.5))
 # ---- mix
 def conv(x,h):
